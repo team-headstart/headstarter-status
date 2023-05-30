@@ -1,40 +1,42 @@
 settings:
-  title: ‘Headstarter Status’
-  url: ‘https://status.headstarter.workers.dev/’ # used for Slack messages
+  title: "Headstarter Status"
+  url: "https://status.headstarter.workers.dev/" # used for Slack messages
   logo: logo-192x192.png # image in ./public/ folder
   daysInHistogram: 90 # number of days you want to display in histogram
   collectResponseTimes: true # collects avg response times from CRON locations
-  allmonitorsOperational: ‘All Systems Operational’
-  notAllmonitorsOperational: ‘Not All Systems Operational’
-  monitorLabelOperational: ‘Operational’
-  monitorLabelNotOperational: ‘Not Operational’
-  monitorLabelNoData: ‘No data’
-  dayInHistogramNoData: ‘No data’
-  dayInHistogramOperational: ‘All good’
+  allmonitorsOperational: "All Systems Operational"
+  notAllmonitorsOperational: "Not All Systems Operational"
+  monitorLabelOperational: "Operational"
+  monitorLabelNotOperational: "Not Operational"
+  monitorLabelNoData: "No data"
+  dayInHistogramNoData: "No data"
+  dayInHistogramOperational: "All good"
   dayInHistogramNotOperational: ' incident(s)' # xx incident(s) recorded
   
 monitors:
   - id: landing-page # unique identifier
     name: theheadstarter.com
-    description: ‘Landing Page’ # default=empty
-    url: ‘https://theheadstarter.com’ # URL to fetch
+    description: "Landing Page" # default=empty
+    url: "https://www.theheadstarter.com" # URL to fetch
     method: GET # default=GET
     expectStatus: 200 # operational status, default=200
     followRedirect: false # should fetch follow redirects, default=false
-    linkable: false # allows the title to be a link, default=true
+    linkable: true # allows the title to be a link, default=true
     
   - id: app-prod
     name: app.theheadstarter.com
-    description: ‘Headstarter App (Production)’
-    url: ‘https://app.theheadstarter.com/auth/login/’
-    method: GET
+    description: "Headstarter App (Production)"
+    url: "https://app.theheadstarter.com/api/auth/login/"
+    method: POST
+    body: '{"email":"johntest1@hs.com","password":"johntest"}'
     expectStatus: 200
-    linkable: true # allows the title to be a link, default=true
+    linkable: false # allows the title to be a link, default=true
     
   - id: app-dev
     name: dev.app.theheadstarter.com
-    description: ‘Headstarter App (Development)’
-    url: ‘https://dev.app.theheadstarter.com/auth/login/’
-    method: GET
+    description: "Headstarter App (Development)"
+    url: "https://dev.app.theheadstarter.com/api/auth/login/"
+    method: POST
+    body: '{"email":"johntest1@hs.com","password":"johntest"}'
     expectStatus: 200
-    linkable: true # allows the title to be a link, default=true
+    linkable: false # allows the title to be a link, default=true
