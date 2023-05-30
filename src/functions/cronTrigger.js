@@ -47,7 +47,9 @@ export async function processCronTrigger(event) {
       redirect: monitor.followRedirect ? 'follow' : 'manual',
       headers: {
         'User-Agent': config.settings.user_agent || 'cf-worker-status-page',
+        'Content-Type': monitor.body ? 'application/json' : null,
       },
+      body: monitor.body || null,
     }
 
     // Perform a check and measure time
