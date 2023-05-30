@@ -4,6 +4,12 @@ account_id = "cfdc1345e7a00ad943b2eb72302f521a"
 type = "webpack"
 webpack_config = "node_modules/flareact/webpack"
 compatibility_date = "2021-07-23"
+kv_namespaces = [ 
+	 { binding = "KV_STATUS_PAGE", id = "4edb70c1ac2f40ad8e6cf3309570fd2c" }
+]
+
+[vars]
+SECRET_SLACK_WEBHOOK_URL = "https://hooks.slack.com/services/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"
 
 [triggers]
 crons = ["*/3 * * * *"]
@@ -11,11 +17,3 @@ crons = ["*/3 * * * *"]
 [site]
 bucket = "out"
 entry-point = "./"
-
-# uncomment and adjust following if you are not using GitHub Actions
-[env.production]
-kv_namespaces = [ 
-	 { binding = "KV_STATUS_PAGE", id = "3e5fb2147bde4398a74a2ca575569728" }
-]
-#zone_id="xxx"
-#route="xxx"
